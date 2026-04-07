@@ -2,15 +2,15 @@
 # Replace these values with your database details
 
 # Database Connection
-dbms: "sql server"        # Options: "sql server", "snowflake", "spark", "postgresql", etc.
-server: "esmpmdbpr4.esm.johnshopkins.edu"       # Your database server
-database: "JHM_OMOP_NoId"     # Your OMOP database
-user: "NA"         # Your username
+dbms: "spark"        # Options: "sql server", "snowflake", "spark", "postgresql", etc.
+server: "databricks://adb-4068548029743470.10.azuredatabricks.net"       # Your database server
+database: "data"     # Your OMOP database
+user: "token"         # Your username
 password: "NA"     # Your password
-schema: "dbo"             # Your OMOP schema
+schema: "data.omop"             # Your OMOP schema
 site_name: "JHU"    # Your site identifier
 
 # Optional settings
 port: null                # Only if non-standard port
 warehouse: null           # For Snowflake only
-connectionString: null    # For Databricks only
+connectionString: "jdbc:databricks://adb-4068548029743470.10.azuredatabricks.net:443/default;transportMode=http;ssl=1;AuthMech=3;httpPath=/sql/1.0/warehouses/ba264cbc3c5cca0d"    # For Databricks only
