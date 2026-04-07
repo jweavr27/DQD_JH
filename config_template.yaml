@@ -1,0 +1,16 @@
+# CAIA OMOP DQD Configuration
+# Replace these values with your database details
+
+# Database Connection
+dbms: "sql server"        # Options: "sql server", "snowflake", "spark", "postgresql", etc.
+server: "esmpmdbpr4.esm.johnshopkins.edu"       # Your database server
+database: "JHM_OMOP_NoId"     # Your OMOP database
+user: "NA"         # Your username
+password: "NA"     # Your password
+schema: "dbo"             # Your OMOP schema
+site_name: "JHU"    # Your site identifier
+
+# Optional settings
+port: null                # Only if non-standard port
+warehouse: null           # For Snowflake only
+connectionString: null    # For Databricks only
