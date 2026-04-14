@@ -1,1 +1,3 @@
-viewDqDashboard(jsonPath= file.path("R:/jeffweavertest/CAIA/Data Quality Testing/results/caia_JHM_20260106_155011/DataQualityResults.json"))
+#viewDqDashboard(jsonPath= file.path("./DQD_Results/DQD_Results_20260414_115949.json"))
+#DataQualityDashboard::viewDqDashboard("./DQD_Results/DQD_Results_20260414_115949.json")
+viewDqDashboard(jsonPath= "R:/jeffweavertest/Repositories/DQD_JH/DQD_Results/DQD_Results_20260414_115949.json")

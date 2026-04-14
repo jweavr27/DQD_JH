@@ -45,7 +45,7 @@ library(jsonlite)
 databricks_config <- list(
   # JDBC Driver location
   #jdbc_driver_path = "C:/Users/jweave44/DatabricksJDBC42-2.6.36.1062",
-  jdbc_driver_path = "C:/Users/jweave44/DatabricksJDBC-3.3.1",
+  jdbc_driver_path = "C:/Program Files/DatabricksJDBC42-2.6.38.1068",
   #jdbc_driver_path = "C:/Users/jweave44/OHDSI_drivers",
   
   # Databricks workspace URL (modify as needed)
@@ -55,7 +55,7 @@ databricks_config <- list(
   
   # Database/Schema settings for OMOP CDM
   cdm_database_schema = "data_mgmt.jhm_omop",  # MODIFY THIS - Schema containing OMOP CDM tables
-  results_database_schema = "clinical_notes.nlp_dobbins",  # MODIFY THIS - Schema to write results
+  results_database_schema = "data_mgmt.jhm_omop",  # MODIFY THIS - Schema to where results are written
   vocab_database_schema = "data_mgmt.jhm_omop",  # MODIFY THIS - Usually same as CDM schema
   
   # CDM Source Name
@@ -123,8 +123,6 @@ create_databricks_connection <- function(config, token) {
     "httpPath=", config$http_path, ";",
     "AuthMech=3;",
     "EnableArrow=0;",
-    "ThriftTransport=2;",
-    "UseNativeQuery=1;",
     "UID=token;",
     "PWD=", token
   )
@@ -156,7 +154,7 @@ create_databricks_connection_v2 <- function(config, token) {
     password = token,
     pathToDriver = config$jdbc_driver_path,
     extraSettings = paste0(
-      "transportMode=http;ssl=1;httpPath=", config$http_path, ";AuthMech=3;ThriftTransport=2"
+      "transportMode=http;ssl=1;httpPath=", config$http_path, ";AuthMech=3;EnableArrow=0"
     )
   )
   
@@ -167,7 +165,7 @@ create_databricks_connection_v2 <- function(config, token) {
 
 
 # Create connection details
-connection_details <- create_databricks_connection_v2(databricks_config, databricks_token)
+connection_details <- create_databricks_connection(databricks_config, databricks_token)
 
 # -----------------------------------------------------------------------------
 # 6. Test Database Connection
